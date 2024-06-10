@@ -10,7 +10,7 @@
   "author": "Sofia Shashova",
   "license": "ISC",
   "bin": {
-    "gendiff": "bin/gendiff.js"
+    "gendiff -h": "bin/gendiff.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.4.0",
