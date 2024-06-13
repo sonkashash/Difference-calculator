@@ -1,10 +1,11 @@
-import normalizePath from './utils.js';
+import getPath from './utils.js';
 import fs from 'fs';
 
 const parseFile = (path) => {
     const fileName = path.split('/').at(-1);
-    const normalizedPath = normalizePath('src/data', fileName );
-    const contentInFile = fs.readFileSync(normalizedPath);
+    const dirNameFixtures = '__fixtures__';
+    const normalizedPath = getPath(dirNameFixtures, fileName );
+    const contentInFile = fs.readFileSync(normalizedPath, 'utf-8');
     return JSON.parse(contentInFile)   
 }
 
