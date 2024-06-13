@@ -1,12 +1,8 @@
-import getPath from './utils.js';
-import fs from 'fs';
+import readFile from './utils.js';
+
 
 const parseFile = (path) => {
-    const fileName = path.split('/').at(-1);
-    const dirNameFixtures = '__fixtures__';
-    const normalizedPath = getPath(dirNameFixtures, fileName );
-    const contentInFile = fs.readFileSync(normalizedPath, 'utf-8');
-    return JSON.parse(contentInFile)   
+    return JSON.parse(readFile(path));
 }
 
 const genDiff = (path1, path2) => {
@@ -24,6 +20,7 @@ const genDiff = (path1, path2) => {
             if ( Object.hasOwn(obj2, key) ) resObj[`+ ${key}`] = obj2[key];
         }
     }
+
     return (JSON.stringify(resObj))
 }
 
