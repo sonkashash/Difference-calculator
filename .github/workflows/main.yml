@@ -3,7 +3,6 @@ name: lint and test
 # Trigger the workflow on push or pull request
 on:
   - push
-  - pull_request
 
 env:
   CI: true
