@@ -1,28 +1,23 @@
 import readFile from './utils.js';
 
-
-const parseFile = (path) => {
-    return JSON.parse(readFile(path));
-}
+const parseFile = (path) => JSON.parse(readFile(path));
 
 const genDiff = (path1, path2) => {
-    const obj1 = parseFile(path1);
-    const obj2 = parseFile(path2)
-    let resObj = {};
-    const keys = [...Object.keys(obj1), ...Object.keys(obj2)].sort();
+  const obj1 = parseFile(path1);
+  const obj2 = parseFile(path2);
+  const resObj = {};
+  const keys = [...Object.keys(obj1), ...Object.keys(obj2)].sort();
 
-    for (let key of keys){
-        if (obj1[key] === obj2[key]){
-            resObj[` ${key} `] = obj1[key];
-        }
-        if (obj1[key] !== obj2[key]){
-            if ( Object.hasOwn(obj1, key) ) resObj[`- ${key}`] = obj1[key];
-            if ( Object.hasOwn(obj2, key) ) resObj[`+ ${key}`] = obj2[key];
-        }
+  keys.forEach((key) => {
+    if (obj1[key] === obj2[key]) {
+      resObj[` ${key} `] = obj1[key];
+    } else {
+      if (Object.hasOwn(obj1, key)) resObj[`- ${key}`] = obj1[key];
+      if (Object.hasOwn(obj2, key)) resObj[`+ ${key}`] = obj2[key];
     }
+  });
 
-    return (JSON.stringify(resObj))
-}
+  return (JSON.stringify(resObj));
+};
 
 export default genDiff;
-
