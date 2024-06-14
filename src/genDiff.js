@@ -1,6 +1,4 @@
-import readFile from './utils.js';
-
-const parseFile = (path) => JSON.parse(readFile(path));
+import parseFile from './parsers.js';
 
 const genDiff = (path1, path2) => {
   const obj1 = parseFile(path1);
@@ -21,3 +19,5 @@ const genDiff = (path1, path2) => {
 };
 
 export default genDiff;
+
+

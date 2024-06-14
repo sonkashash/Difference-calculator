@@ -12,9 +12,15 @@
 * Генерация отчета в виде plain text, stylish и json
 
 2. Возможные команды
-   * [Вывод справки + вычисление отличий в двух файлах](https://asciinema.org/a/XwyGiQpguPxrztKLGBbgkGpWj)
+   * [Вывод справки + вычисление отличий в двух файлах ( формат JSON )](https://asciinema.org/a/XwyGiQpguPxrztKLGBbgkGpWj)
      ```
      gendiff -h
-     gendiff <file1><file2>
+     gendiff <file1.json><file2.json>
      ```
+
+* [Вычисление отличий в двух файлах ( формат YAMl )](https://asciinema.org/a/L0LyBqMdWYMtc8gl0K4QyKSFF)
+    ```
+     gendiff <file1.yml><file2.yml>
+     ```
+
      
