@@ -19,5 +19,3 @@ const genDiff = (path1, path2) => {
 };
 
 export default genDiff;
-
-
