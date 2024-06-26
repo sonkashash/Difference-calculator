@@ -10,7 +10,7 @@ const parseFile = (fileName) => {
     case '.yml' || '.yaml':
       return yaml.load(readFile(fileName));
     default:
-      return JSON.parse(readFile(fileName));
+      throw new Error('Неподходящее расширение');
   }
 };
 

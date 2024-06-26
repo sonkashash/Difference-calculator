@@ -22,5 +22,10 @@
     ```
      gendiff <file1.yml><file2.yml>
      ```
+* [Вычисление отличий в файлах с вложенными структурами](https://asciinema.org/a/u5kab3OIz0vvc5tqEd7ohWB7J)
+  
+     ```
+     gendiff <file1.json><file2.yml>
+     ```
 
      
