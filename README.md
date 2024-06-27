@@ -27,9 +27,12 @@
      ```
      gendiff <file1.json><file2.yml>
      ```
-* [Вычисление отличий в формате 'plain' с описанием](https://asciinema.org/a/Ms6JTNiegEI4VsJy8hYWLAPgU)
+* [Вычисление отличий в формате 'plain'](https://asciinema.org/a/Ms6JTNiegEI4VsJy8hYWLAPgU)
      ```
      gendiff --format plain <file1.json><file2.yml>
      ```
-
+* [Вычисление отличий в формате 'json'](https://asciinema.org/a/27piwHqxBv93O7hzn2zBoNXdc)
+     ```
+     gendiff --format json <file1.json><file2.yml>
+     ```
      

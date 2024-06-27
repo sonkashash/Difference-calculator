@@ -9,6 +9,7 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 
 const diffStylish = JSON.stringify(readFile('diff_stylish.txt'));
 const diffPlain = JSON.stringify(readFile('diff_plain.txt'));
+const diffJson = JSON.stringify(readFile('diff_json.txt'));
 
 test('genDiff stylish', () => {
   const gendiff = JSON.stringify((genDiff('file1.json', 'file2.json', 'stylish')));
@@ -30,4 +31,15 @@ test('genDiff plain', () => {
 
   const gendiff3 = JSON.stringify(genDiff('file1.json', 'file2.yml', 'plain'));
   expect(gendiff3).toEqual(diffPlain);
+});
+
+test('genDiff json', () => {
+  const gendiff = JSON.stringify((genDiff('file1.json', 'file2.json', 'json')));
+  expect(gendiff).toEqual(diffJson);
+
+  const gendiff2 = JSON.stringify(genDiff('file1.yml', 'file2.yml', 'json'));
+  expect(gendiff2).toEqual(diffJson);
+
+  const gendiff3 = JSON.stringify(genDiff('file1.json', 'file2.yml', 'json'));
+  expect(gendiff3).toEqual(diffJson);
 });
