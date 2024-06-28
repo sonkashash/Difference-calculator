@@ -34,7 +34,7 @@ const stylish = (resultDiff) => {
         return `${indent}${typeSymbols[item.type]} ${item.name}: ${stringify(item.value, depth + 1)}`;
       }
       if (item.type === 'changed') {
-        return `${indent}${typeSymbols.deleted} ${item.name}: ${stringify(item.oldValue, depth + 1)}\n${indent}${typeSymbols.added} ${item.name}: ${stringify(item.newValue, depth + 1)}`;
+        return `${indent}${typeSymbols.deleted} ${item.name}: ${stringify(item.valueBefore, depth + 1)}\n${indent}${typeSymbols.added} ${item.name}: ${stringify(item.valueAfter, depth + 1)}`;
       }
       if (item.type === 'nested') {
         return `${indent}  ${item.name}: ${iter(item.children, depth + 1)}`;
