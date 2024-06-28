@@ -11,35 +11,20 @@ const diffStylish = JSON.stringify(readFile('diff_stylish.txt'));
 const diffPlain = JSON.stringify(readFile('diff_plain.txt'));
 const diffJson = JSON.stringify(readFile('diff_json.txt'));
 
-test('genDiff stylish', () => {
-  const gendiff = JSON.stringify((genDiff('file1.json', 'file2.json', 'stylish')));
-  expect(gendiff).toEqual(diffStylish);
+const testData = [
+  { format: 'stylish', expected: diffStylish },
+  { format: 'plain', expected: diffPlain },
+  { format: 'json', expected: diffJson },
+];
 
-  const gendiff2 = JSON.stringify(genDiff('file1.yml', 'file2.yml', 'stylish'));
-  expect(gendiff2).toEqual(diffStylish);
-
-  const gendiff3 = JSON.stringify(genDiff('file1.json', 'file2.yml', 'stylish'));
-  expect(gendiff3).toEqual(diffStylish);
+test.each(testData)('genDiff $format', ({ format, expected }) => {
+  expect(JSON.stringify(genDiff('file1.json', 'file2.json', format))).toEqual(expected);
 });
 
-test('genDiff plain', () => {
-  const gendiff = JSON.stringify((genDiff('file1.json', 'file2.json', 'plain')));
-  expect(gendiff).toEqual(diffPlain);
-
-  const gendiff2 = JSON.stringify(genDiff('file1.yml', 'file2.yml', 'plain'));
-  expect(gendiff2).toEqual(diffPlain);
-
-  const gendiff3 = JSON.stringify(genDiff('file1.json', 'file2.yml', 'plain'));
-  expect(gendiff3).toEqual(diffPlain);
+test.each(testData)('Output: $format', ({ format, expected }) => {
+  expect(JSON.stringify(genDiff('file1.yml', 'file2.yml', format))).toEqual(expected);
 });
 
-test('genDiff json', () => {
-  const gendiff = JSON.stringify((genDiff('file1.json', 'file2.json', 'json')));
-  expect(gendiff).toEqual(diffJson);
-
-  const gendiff2 = JSON.stringify(genDiff('file1.yml', 'file2.yml', 'json'));
-  expect(gendiff2).toEqual(diffJson);
-
-  const gendiff3 = JSON.stringify(genDiff('file1.json', 'file2.yml', 'json'));
-  expect(gendiff3).toEqual(diffJson);
+test.each(testData)('Output: $format', ({ format, expected }) => {
+  expect(JSON.stringify(genDiff('file1.json', 'file2.yml', format))).toEqual(expected);
 });
