@@ -1,7 +1,6 @@
 import isObject from 'lodash/isObject.js';
 import _ from 'lodash';
 
-
 const compareDeep = (obj1, obj2) => {
   const keys = [..._.keys(obj1), ..._.keys(obj2)];
   const sortedKeys = _.sortBy(_.union(keys));
