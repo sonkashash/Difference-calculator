@@ -17,7 +17,7 @@ const compareDeep = (obj1, obj2) => {
     }
     if (obj1[key] !== obj2[key]) {
       return {
-        name: key, type: 'changed', valueBefore: obj1[key], valueAfter: obj2[key],
+        name: key, type: 'changed', oldValue: obj1[key], newValue: obj2[key],
       };
     }
     return { name: key, type: 'unchanged', value: obj1[key] };

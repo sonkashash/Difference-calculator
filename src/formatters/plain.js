@@ -22,7 +22,7 @@ const plain = (resultDiff) => {
         case 'added':
           return `Property '${pathToItem}${item.name}' was added with value: ${stringifyValue(item.value)}`;
         case 'changed':
-          return `Property '${pathToItem}${item.name}' was updated. From ${stringifyValue(item.valueBefore)} to ${stringifyValue(item.valueAfter)}`;
+          return `Property '${pathToItem}${item.name}' was updated. From ${stringifyValue(item.oldValue)} to ${stringifyValue(item.newValue)}`;
         case 'nested':
           return iter(item.children, `${pathToItem}${item.name}.`);
         default:
