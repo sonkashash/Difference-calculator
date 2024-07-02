@@ -1,17 +1,14 @@
 import yaml from 'js-yaml';
-import path from 'path';
-import readFile from './utils.js';
 
-const parseFile = (fileName) => {
-  const extension = path.extname(fileName);
+const parseObj = (obj, extension) => {
   switch (extension) {
     case '.json':
-      return JSON.parse(readFile(fileName));
+      return JSON.parse(obj);
     case '.yml' || '.yaml':
-      return yaml.load(readFile(fileName));
+      return yaml.load(obj);
     default:
       throw new Error('Неподходящее расширение');
   }
 };
 
-export default parseFile;
+export default parseObj;
