@@ -1,15 +1,9 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-import fs from 'fs';
 import genDiff from '../src/index.js';
+import readFile from '../src/utils.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
-
-const diffStylish = JSON.stringify(readFile('diff_stylish.txt'));
-const diffPlain = JSON.stringify(readFile('diff_plain.txt'));
-const diffJson = JSON.stringify(readFile('diff_json.txt'));
+const diffStylish = readFile('diff_stylish.txt');
+const diffPlain = readFile('diff_plain.txt');
+const diffJson = readFile('diff_json.txt');
 
 const testData = [
   { format: 'stylish', expected: diffStylish },
@@ -18,19 +12,19 @@ const testData = [
 ];
 
 test.each(testData)('genDiff $format', ({ format, expected }) => {
-  expect(JSON.stringify(genDiff('file1.json', 'file2.json', format))).toEqual(
+  expect(genDiff('file1.json', 'file2.json', format)).toEqual(
     expected,
   );
 });
 
 test.each(testData)('Output: $format', ({ format, expected }) => {
-  expect(JSON.stringify(genDiff('file1.yml', 'file2.yml', format))).toEqual(
+  expect(genDiff('file1.yml', 'file2.yml', format)).toEqual(
     expected,
   );
 });
 
 test.each(testData)('Output: $format', ({ format, expected }) => {
-  expect(JSON.stringify(genDiff('file1.json', 'file2.yml', format))).toEqual(
+  expect(genDiff('file1.json', 'file2.yml', format)).toEqual(
     expected,
   );
 });
