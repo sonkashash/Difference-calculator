@@ -17,15 +17,9 @@ test.each(testData)('genDiff $format', ({ format, expected }) => {
   expect(genDiff(`${pathToFile1}.json`, `${pathToFile2}.json`, format)).toEqual(
     expected,
   );
-});
-
-test.each(testData)('Output: $format', ({ format, expected }) => {
   expect(genDiff(`${pathToFile1}.yml`, `${pathToFile2}.yml`, format)).toEqual(
     expected,
   );
-});
-
-test.each(testData)('Output: $format', ({ format, expected }) => {
   expect(genDiff(`${pathToFile1}.json`, `${pathToFile2}.yml`, format)).toEqual(
     expected,
   );
