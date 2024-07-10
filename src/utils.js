@@ -1,16 +1,11 @@
-import process from 'process';
 import path from 'path';
 import fs from 'fs';
 
-const getAbsPath = (pathToFile) => {
-  const __dirname = process.cwd();
-  const absPath = path.resolve(__dirname, pathToFile);
-  return absPath;
+const getAbsPath = (pathToFile) => path.resolve(pathToFile);
+
+export const readFile = (pathToFile) => {
+  const absPath = getAbsPath(pathToFile);
+  return fs.readFileSync(absPath, 'utf-8');
 };
 
-const readFile = (pathToFile) => {
-  const normalizedPath = pathToFile.startsWith('/') ? pathToFile : getAbsPath(pathToFile);
-  return fs.readFileSync(normalizedPath, 'utf-8');
-};
-
-export default readFile;
+export const getExtension = (pathToFile) => path.extname(pathToFile).slice(1);

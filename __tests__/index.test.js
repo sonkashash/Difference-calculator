@@ -1,5 +1,5 @@
 import genDiff from '../src/index.js';
-import readFile from '../src/utils.js';
+import { readFile } from '../src/utils.js';
 
 const diffStylish = readFile('__fixtures__/diff_stylish.txt');
 const diffPlain = readFile('__fixtures__/diff_plain.txt');

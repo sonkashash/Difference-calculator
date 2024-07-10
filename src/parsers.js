@@ -2,9 +2,9 @@ import yaml from 'js-yaml';
 
 const parseObj = (obj, extension) => {
   switch (extension) {
-    case '.json':
+    case 'json':
       return JSON.parse(obj);
-    case '.yml' || '.yaml':
+    case 'yml' || 'yaml':
       return yaml.load(obj);
     default:
       throw new Error('Неподходящее расширение');
